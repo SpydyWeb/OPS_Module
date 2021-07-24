@@ -48,7 +48,7 @@ namespace OPS_Module.Controllers
             {
                 if (await _query.register(signUp))
                 {
-                    if(signUp.PancardImage.Length!=0)
+                    if(signUp.PancardImage!=null)
                     {
                         string uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "Images");
                         var uniqueFileName = Guid.NewGuid().ToString() + "_" +signUp.EmployeeName+ signUp.PancardImage.FileName;
@@ -59,7 +59,7 @@ namespace OPS_Module.Controllers
                         }
                         signUp.pancardimagepath = filePath;
                     }
-                    if(signUp.AdharcardImage.Length!=0)
+                    if(signUp.AdharcardImage!=null)
                     {
                         string uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "Images");
                         var uniqueFileName = Guid.NewGuid().ToString() + "_" + signUp.EmployeeName + signUp.AdharcardImage.FileName;
@@ -70,7 +70,7 @@ namespace OPS_Module.Controllers
                         }
                         signUp.aadharcardimagepath = filePath;
                     }
-                    if(signUp.EmployeeImage.Length!=0)
+                    if(signUp.EmployeeImage!=null)
                     {
                         string uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "Images");
                         var uniqueFileName = Guid.NewGuid().ToString() + "_" + signUp.EmployeeName + signUp.EmployeeImage.FileName;
@@ -82,6 +82,10 @@ namespace OPS_Module.Controllers
                         signUp.employeeimagepath = filePath;
                     }
                     var added = await _query.addemployeedetailsAsync(signUp);
+                    if(added>0)
+                    {
+                        return RedirectToAction(nameof(Login));
+                    }
                 }
             }
             return View(signUp);

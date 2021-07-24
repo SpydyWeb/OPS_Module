@@ -42,17 +42,14 @@ namespace ModelLayer.AuthenticationModel
         public int? ApprovedBy { get; set; }
         [Display(Name = "Upload Your Pan Card")]
         [Required(ErrorMessage = "Please Upload your pan card")]
-        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.jpeg|.pdf)$", ErrorMessage = "Only Image and Pdf files allowed.")]
         public IFormFile PancardImage { get; set; }
         public string pancardimagepath { get; set; }
         [Display(Name = "Upload Your Adhaar Card")]
-        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.jpeg|.pdf)$", ErrorMessage = "Only Image and Pdf files allowed.")]
         public IFormFile AdharcardImage { get; set; }
-        public string aadharcardimagepath { get; set; }
+        public string? aadharcardimagepath { get; set; }
         [Display(Name = "Upload Your Photo")]
-        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpeg|.jpg)$", ErrorMessage = "Only Image files allowed.")]
         public IFormFile EmployeeImage { get; set; }
-        public string employeeimagepath { get; set; }
+        public string? employeeimagepath { get; set; }
         public int LoginId { get; set; }
         [Display(Name ="Password")]
         [Required(ErrorMessage ="Please enter password")]
@@ -65,6 +62,7 @@ namespace ModelLayer.AuthenticationModel
         [Compare("Password",ErrorMessage ="Password doesn't matched")]
         public string ConfirmedPassword { get; set; }
         [Display(Name = "Pan Card")]
+        [MaxLength(10)]
         public string pancard { get; set; }
     }
 }

@@ -44,6 +44,6 @@ namespace DataLayer.TableClass
         [DataType(((decimal)DataType.Custom))]
         public decimal? AnnualCTC { get; set; }
         public DateTime? JoiningDate { get; set; }
-        public int LoginId { get; set; }
+        public string LoginId { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using DataLayer.DBClass;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataLayer.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20210724183956_datatype")]
+    partial class datatype
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,8 +100,8 @@ namespace DataLayer.Migrations
                     b.Property<DateTime?>("JoiningDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("LoginId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long>("LoginId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("MasterAllowed")
                         .HasColumnType("nvarchar(max)");

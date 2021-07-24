@@ -53,7 +53,7 @@ namespace DataLayer.Query
                 RecInsTime = DateTime.Now,
                 PinCode = signUp.PinCode,
                 IsApproved = false,
-                LoginId = int.Parse(id),
+                LoginId = id,
                 AdharcardImage = signUp.aadharcardimagepath,
                 PancardImage = signUp.pancardimagepath,
                 PanCard = signUp.pancard,
