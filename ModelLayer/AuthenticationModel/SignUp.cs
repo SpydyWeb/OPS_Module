@@ -34,6 +34,8 @@ namespace ModelLayer.AuthenticationModel
         public string Address { get; set; }
         [Display(Name = "Enter Your PinCode")]
         [Required(ErrorMessage = "Please Enter your pincode")]
+        [StringLength(6)]
+        [MinLength(6)]
         public long? PinCode { get; set; }  
         
         public string State { get; set; }        
