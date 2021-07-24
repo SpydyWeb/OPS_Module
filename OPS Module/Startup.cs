@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataLayer.DBClass;
+using Microsoft.AspNetCore.Identity;
+using DataLayer.Query;
 
 namespace OPS_Module
 {
@@ -25,9 +27,12 @@ namespace OPS_Module
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-            services.AddDbContext<DBContext>(op=>op.UseSqlServer(this.Configuration.GetConnectionString("OPSModuleConnection")));
+            services.AddControllersWithViews();           
+            //services.AddDbContext<DBContext>(op=>op.UseSqlServer(this.Configuration.GetConnectionString("OPSModuleConnection")));
+            services.AddDbContext<DBContext>(op=>op.UseSqlServer(this.Configuration.GetConnectionString("sameerconnection")));
             services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<DBContext>();
+            services.AddScoped<IAuthenticationQuery, AuthenticationQuery>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

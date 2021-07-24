@@ -20,10 +20,9 @@ namespace DataLayer.DBClass
         public DbSet<OPS_Mst_ProvisionalMerchant> TBL_OPS_Mst_ProvisionalMerchant { get; set; }
         public DbSet<OPS_Trn_ActivityPerformed> TBL_OPS_Trn_ActivityPerformed { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-94565G6\\SQLEXPRESS;Initial Catalog=OPS_Module;trusted_connection=true;");
-            base.OnConfiguring(optionsBuilder);
+            base.OnModelCreating(modelBuilder);
 
         }
     }

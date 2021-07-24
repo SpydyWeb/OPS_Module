@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -42,23 +43,28 @@ namespace ModelLayer.AuthenticationModel
         [Display(Name = "Upload Your Pan Card")]
         [Required(ErrorMessage = "Please Upload your pan card")]
         [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.jpeg|.pdf)$", ErrorMessage = "Only Image and Pdf files allowed.")]
-        public string PancardImage { get; set; }
+        public IFormFile PancardImage { get; set; }
+        public string pancardimagepath { get; set; }
         [Display(Name = "Upload Your Adhaar Card")]
         [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.jpeg|.pdf)$", ErrorMessage = "Only Image and Pdf files allowed.")]
-        public string? AdharcardImage { get; set; }
+        public IFormFile AdharcardImage { get; set; }
+        public string aadharcardimagepath { get; set; }
         [Display(Name = "Upload Your Photo")]
-        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.jpeg)$", ErrorMessage = "Only Image files allowed.")]
-        public string? EmployeeImage { get; set; }
+        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpeg|.jpg)$", ErrorMessage = "Only Image files allowed.")]
+        public IFormFile EmployeeImage { get; set; }
+        public string employeeimagepath { get; set; }
         public int LoginId { get; set; }
-        [Display(Name ="Enter New Password")]
+        [Display(Name ="Password")]
         [Required(ErrorMessage ="Please enter password")]
         [DataType(DataType.Password)]
         [RegularExpression("^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])|(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])|(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])).{8,}$", ErrorMessage = "Passwords must be at least 8 characters and contain at 3 of 4 of the following: upper case (A-Z), lower case (a-z), number (0-9) and special character (e.g. !@#$%^&*)")]
         public string Password { get; set; }
-        [Display(Name = "Enter Confirmed Password")]
+        [Display(Name = "Confirm Password")]
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "Please enter confirmed password")]
         [Compare("Password",ErrorMessage ="Password doesn't matched")]
         public string ConfirmedPassword { get; set; }
+        [Display(Name = "Pan Card")]
+        public string pancard { get; set; }
     }
 }
