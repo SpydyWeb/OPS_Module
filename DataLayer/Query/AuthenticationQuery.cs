@@ -61,6 +61,7 @@ namespace DataLayer.Query
             };
             await _dB.AddAsync(emp);
             return await (_dB.SaveChangesAsync());
+            //_signIn.PasswordSignInAsync()
         }
     }
 }

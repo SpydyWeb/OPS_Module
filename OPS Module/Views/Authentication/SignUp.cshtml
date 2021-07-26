@@ -5,85 +5,116 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>SignUp</h1>
-
-<h4>SignUp</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<a href="LogIn" class="btn btn-primary float-right">Log In</a>
+<div class="row mt-5">
+    <div class="col-md-12">
         <form asp-action="SignUp" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="EmployeeName" class="control-label"></label>
-                <input asp-for="EmployeeName" class="form-control" />
-                <span asp-validation-for="EmployeeName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmailId" class="control-label"></label>
-                <input asp-for="EmailId" class="form-control" />
-                <span asp-validation-for="EmailId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNo" class="control-label"></label>
-                <input asp-for="PhoneNo" class="form-control" />
-                <span asp-validation-for="PhoneNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateOfBirth" class="control-label"></label>
-                <input asp-for="DateOfBirth" class="form-control" />
-                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <textarea asp-for="Address" class="form-control"></textarea>
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PinCode" class="control-label"></label>
-                <input asp-for="PinCode" class="form-control" />
-                <span asp-validation-for="PinCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="State" class="control-label"></label>
-                <input asp-for="State" class="form-control" readonly="readonly"/>
-                <span asp-validation-for="State" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmedPassword" class="control-label"></label>
-                <input asp-for="ConfirmedPassword" class="form-control" />
-                <span asp-validation-for="ConfirmedPassword" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="pancard" class="control-label"></label>
-                <input asp-for="pancard" class="form-control" />
-                <span asp-validation-for="pancard" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PancardImage" class="control-label"></label>
-                <input asp-for="PancardImage" class="form-control" />
-                <span asp-validation-for="PancardImage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AdharcardImage" class="control-label"></label>
-                <input asp-for="AdharcardImage" class="form-control" />
-                <span asp-validation-for="AdharcardImage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmployeeImage" class="control-label"></label>
-                <input asp-for="EmployeeImage" class="form-control" />
-                <span asp-validation-for="EmployeeImage" class="text-danger"></span>
-            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="EmployeeName" class="control-label"></label>
+                        <input asp-for="EmployeeName" class="form-control" />
+                        <span asp-validation-for="EmployeeName" class="text-danger"></span>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="EmailId" class="control-label"></label>
+                        <input asp-for="EmailId" class="form-control" />
+                        <span asp-validation-for="EmailId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="PhoneNo" class="control-label"></label>
+                        <input asp-for="PhoneNo" class="form-control" />
+                        <span asp-validation-for="PhoneNo" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-        </form>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="DateOfBirth" class="control-label"></label>
+                        <input asp-for="DateOfBirth" class="form-control" />
+                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="pancard" class="control-label"></label>
+                        <input asp-for="pancard" class="form-control" />
+                        <span asp-validation-for="pancard" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="PinCode" class="control-label"></label>
+                        <input asp-for="PinCode" class="form-control" />
+                        <span asp-validation-for="PinCode" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="State" class="control-label"></label>
+                        <input asp-for="State" class="form-control" readonly="readonly" />
+                        <span asp-validation-for="State" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ConfirmedPassword" class="control-label"></label>
+                        <input asp-for="ConfirmedPassword" class="form-control" />
+                        <span asp-validation-for="ConfirmedPassword" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="EmployeeImage" class="control-label"></label>
+                        <input asp-for="EmployeeImage" class="form-control" />
+                        <span asp-validation-for="EmployeeImage" class="text-danger"></span>
+                    </div>
+                </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="PancardImage" class="control-label"></label>
+                    <input asp-for="PancardImage" class="form-control" />
+                    <span asp-validation-for="PancardImage" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="AdharcardImage" class="control-label"></label>
+                    <input asp-for="AdharcardImage" class="form-control" />
+                    <span asp-validation-for="AdharcardImage" class="text-danger"></span>
+                </div>
+            </div>
     </div>
+    <div class="form-group">
+        <label asp-for="Address" class="control-label"></label>
+        <textarea asp-for="Address" class="form-control"></textarea>
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+    </form>
+</div>
 </div>
 
 
