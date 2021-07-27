@@ -10,11 +10,8 @@ namespace DataLayer.TableClass
     {
         [Key]
         public int ActivityId { get; set; }
-        [StringLength(150)]
         public string ActivityName { get; set; }
-        
         public bool IsActive { get; set; }
-        [DataType(DataType.DateTime)]
         public DateTime? RecInTime { get; set; }
     }
 }

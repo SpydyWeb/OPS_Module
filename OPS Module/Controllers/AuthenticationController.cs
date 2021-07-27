@@ -27,13 +27,13 @@ namespace OPS_Module.Controllers
             var model = new LogIn();
             return View(model);
         }
-        [HttpPost,Route("login")]
+        [HttpPost, Route("login")]
         public virtual async Task<IActionResult> Login(LogIn log)
         {
             if (ModelState.IsValid)
-            { 
+            {
             }
-                return View(log);
+            return View(log);
         }
         [Route("signup")]
         public virtual IActionResult SignUp()
@@ -41,17 +41,17 @@ namespace OPS_Module.Controllers
             var model = new SignUp();
             return View(model);
         }
-        [HttpPost,Route("signup")]
+        [HttpPost, Route("signup")]
         public virtual async Task<IActionResult> SignUp(SignUp signUp)
         {
             if (ModelState.IsValid)
             {
-                if (await _query.register(signUp))
+                if (!await _query.isuserexist(signUp.EmailId))
                 {
-                    if(signUp.PancardImage!=null)
+                    if (signUp.PancardImage != null)
                     {
                         string uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "Images");
-                        var uniqueFileName = Guid.NewGuid().ToString() + "_" +signUp.EmployeeName+ signUp.PancardImage.FileName;
+                        var uniqueFileName = Guid.NewGuid().ToString() + "_" + signUp.EmployeeName + signUp.PancardImage.FileName;
                         string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                         using (var fileStream = new FileStream(filePath, FileMode.Create))
                         {
@@ -59,7 +59,7 @@ namespace OPS_Module.Controllers
                         }
                         signUp.pancardimagepath = filePath;
                     }
-                    if(signUp.AdharcardImage!=null)
+                    if (signUp.AdharcardImage != null)
                     {
                         string uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "Images");
                         var uniqueFileName = Guid.NewGuid().ToString() + "_" + signUp.EmployeeName + signUp.AdharcardImage.FileName;
@@ -70,7 +70,7 @@ namespace OPS_Module.Controllers
                         }
                         signUp.aadharcardimagepath = filePath;
                     }
-                    if(signUp.EmployeeImage!=null)
+                    if (signUp.EmployeeImage != null)
                     {
                         string uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "Images");
                         var uniqueFileName = Guid.NewGuid().ToString() + "_" + signUp.EmployeeName + signUp.EmployeeImage.FileName;
@@ -81,12 +81,16 @@ namespace OPS_Module.Controllers
                         }
                         signUp.employeeimagepath = filePath;
                     }
-                    var added = await _query.addemployeedetailsAsync(signUp);
-                    if(added>0)
+                    if (await _query.register(signUp))
                     {
                         return RedirectToAction(nameof(Login));
                     }
                 }
+                else
+                {
+                    ModelState.AddModelError("", "User Already exist");
+                }
+
             }
             return View(signUp);
         }

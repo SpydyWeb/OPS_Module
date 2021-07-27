@@ -5,7 +5,7 @@ namespace DataLayer.Query
 {
   public  interface IAuthenticationQuery
     {
-        Task<int> addemployeedetailsAsync(SignUp signUp);
         Task<bool> register(SignUp signUp);
+        Task<bool> isuserexist(string email);
     }
 }

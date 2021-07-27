@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using DataLayer.DBClass;
 using Microsoft.AspNetCore.Identity;
 using DataLayer.Query;
+using DataLayer.TableClass;
 
 namespace OPS_Module
 {
@@ -31,8 +32,14 @@ namespace OPS_Module
             //services.AddDbContext<DBContext>(op=>op.UseSqlServer(this.Configuration.GetConnectionString("OPSModuleConnection")));
             services.AddDbContext<DBContext>(op=>op.UseSqlServer(this.Configuration.GetConnectionString("sameerconnection")));
             services.AddRazorPages().AddRazorRuntimeCompilation();
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<DBContext>();
-            services.AddScoped<IAuthenticationQuery, AuthenticationQuery>();
+            services.AddIdentity<OPS_Mst_Employee, IdentityRole>(p => {
+                p.Password.RequireDigit = true;
+                p.Password.RequiredLength = 6;
+                p.Password.RequireLowercase = true;
+                p.Password.RequireUppercase = true;
+                p.User.RequireUniqueEmail = true;
+                });
+           // services.AddScoped<IAuthenticationQuery, AuthenticationQuery>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

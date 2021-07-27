@@ -24,28 +24,11 @@ namespace DataLayer.Query
         }
         public async Task<bool> register(SignUp signUp)
         {
-            var user = new IdentityUser
+            var user = new OPS_Mst_Employee
             {
                 Email = signUp.EmailId,
                 PhoneNumber = signUp.PhoneNo,
-                UserName = signUp.EmailId
-            };
-            var result = await _userManager.CreateAsync(user, signUp.Password);
-            if (result.Succeeded)
-            {
-
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        public async Task<int> addemployeedetailsAsync(SignUp signUp)
-        {
-            var id = _signIn.UserManager.FindByEmailAsync(signUp.EmailId).Result.Id;
-            var emp = new OPS_Mst_Employee
-            {
+                UserName = signUp.EmailId,
                 Address = signUp.Address,
                 EmployeeName = signUp.EmployeeName,
                 DateOfBirth = signUp.DateOfBirth,
@@ -53,14 +36,33 @@ namespace DataLayer.Query
                 RecInsTime = DateTime.Now,
                 PinCode = signUp.PinCode,
                 IsApproved = false,
-                LoginId = id,
                 AdharcardImage = signUp.aadharcardimagepath,
                 PancardImage = signUp.pancardimagepath,
                 PanCard = signUp.pancard,
                 EmployeeImage = signUp.employeeimagepath
             };
-            await _dB.AddAsync(emp);
-            return await (_dB.SaveChangesAsync());
+            var result = await _userManager.CreateAsync(user, signUp.Password);
+            if (result.Succeeded)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public async Task<bool> isuserexist(string email)
+        {
+            var res=await _signIn.UserManager.FindByEmailAsync(email);
+            if(res!=null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+            
         }
     }
 }
