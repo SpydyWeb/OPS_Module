@@ -11,7 +11,12 @@ namespace ModelLayer.AuthenticationModel
   public  class SignUp
     {
         [Key]
+<<<<<<< HEAD
         public long ID { get; set; }
+=======
+        public string EmployeeId { get; set; }
+        public string EmployeeRefNo { get; set; }
+>>>>>>> cb1e20e493bd43e86b5a944cb5232b505cb93eba
         [Display(Name ="Enter Your Name")]
         [Required(ErrorMessage ="Please Enter your name")]
         public string EmployeeName { get; set; }
@@ -27,7 +32,14 @@ namespace ModelLayer.AuthenticationModel
         
         [Display(Name = "Enter Your Address")]
         [Required(ErrorMessage = "Please Enter your address")]
+<<<<<<< HEAD
         public string Address { get; set; }      
+=======
+        public string Address { get; set; }
+        [Display(Name = "Enter Your PinCode")]
+        [Required(ErrorMessage = "Please Enter your pincode")]
+        public long? PinCode { get; set; }  
+>>>>>>> cb1e20e493bd43e86b5a944cb5232b505cb93eba
         
         public string State { get; set; }        
         public bool IsApproved { get; set; }        

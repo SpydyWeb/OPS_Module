@@ -56,6 +56,7 @@ namespace DataLayer.Query
             var res=await _signIn.UserManager.FindByEmailAsync(email);
             if(res!=null)
             {
+<<<<<<< HEAD
                 return false;
             }
             else
@@ -63,6 +64,24 @@ namespace DataLayer.Query
                 return true;
             }
             
+=======
+                Address = signUp.Address,
+                EmployeeName = signUp.EmployeeName,
+                DateOfBirth = signUp.DateOfBirth,
+                State = signUp.State,
+                RecInsTime = DateTime.Now,
+                PinCode = signUp.PinCode,
+                IsApproved = false,
+                LoginId = id,
+                AdharcardImage = signUp.aadharcardimagepath,
+                PancardImage = signUp.pancardimagepath,
+                PanCard = signUp.pancard,
+                EmployeeImage = signUp.employeeimagepath
+            };
+            await _dB.AddAsync(emp);
+            return await (_dB.SaveChangesAsync());
+            //_signIn.PasswordSignInAsync()
+>>>>>>> cb1e20e493bd43e86b5a944cb5232b505cb93eba
         }
     }
 }

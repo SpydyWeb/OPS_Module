@@ -29,8 +29,8 @@ namespace OPS_Module
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();           
-            //services.AddDbContext<DBContext>(op=>op.UseSqlServer(this.Configuration.GetConnectionString("OPSModuleConnection")));
-            services.AddDbContext<DBContext>(op=>op.UseSqlServer(this.Configuration.GetConnectionString("sameerconnection")));
+            services.AddDbContext<DBContext>(op=>op.UseSqlServer(this.Configuration.GetConnectionString("OPSModuleConnection")));
+            //services.AddDbContext<DBContext>(op=>op.UseSqlServer(this.Configuration.GetConnectionString("sameerconnection")));
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddIdentity<OPS_Mst_Employee, IdentityRole>(p => {
                 p.Password.RequireDigit = true;
